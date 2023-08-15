@@ -1,0 +1,47 @@
+/* Example CSS for styling the carousel */
+.carousel-container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+  
+  .carousel-item {
+    text-align: center;
+    padding: 7% 25%;
+    background-color: #CDCEF9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-item h1:first-child{
+    font-size: 30px;
+    font-style: italic;
+    color: #3D0F9E;
+    font-weight: bold;
+  }
+
+  .carousel-item h1:nth-child(2){
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  .carousel-item h1:nth-child(3){
+    margin-top: 25px;
+    font-size: 20px;
+  }
+  
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slick-prev {
+  left: 10px; 
+}
+
+.slick-next {
+  right: 10px; 
+}
