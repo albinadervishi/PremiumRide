@@ -47,7 +47,8 @@ const DriverSchema = new mongoose.Schema({
         required: [true, "This field is required"],
     },
     company: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
       required: [true, "This field is required"],
   },
     availability: {

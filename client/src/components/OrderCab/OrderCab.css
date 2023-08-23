@@ -1,0 +1,77 @@
+.container {
+    justify-content: space-around;
+    padding: 20px 10%;
+    background-color: #CDCEF9;
+}
+
+.container .row .card {
+    width: 200px;
+    height: fit-content;
+    border-radius: 15px;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 20px;
+    background-color: white;
+    color: black;
+    margin: 10px;
+  }
+  
+  .container .row .card:hover {
+    box-shadow: 2px 2px 4px  rgb(113, 113, 113);
+  }
+  
+  .companiesTable{
+    flex-grow: 1;
+    background-color: white;
+    width: 25%;
+    border-radius: 15px;
+    padding: 0px 10px;
+  }
+
+  .driverTable {
+    flex-grow: 2;
+    background-color: white;
+    margin-left: 5%;
+    width: 70%;
+    border-radius: 15px;
+  }
+
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%; 
+  margin: 0 auto;
+}
+
+.driver-title {
+    background-color: white;
+padding: 20px 0px;
+border-radius: 15px 15px 0px 0px;
+}
+  
+.company-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.company-info:hover{
+    box-shadow: 2px 2px 4px  rgb(113, 113, 113);
+}
+
+.company-info img{
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+  
+
+.company-info img:nth-child(2){
+    width: 20px;
+    height: 20px;
+}

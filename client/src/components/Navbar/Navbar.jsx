@@ -37,19 +37,19 @@ const Navbar = (props) => {
           <a href="#" className="closebtn" onClick={closeNav}>
             &times;
           </a>
-          <a href="#">Profile</a>
-          <a href="#">Order a cab</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+          <Link to={"/profile"}><p>Profile</p></Link>
+          <Link to={"/order-cab"}><p >Order a cab</p></Link>
+          <Link to={"/profile"}><p>About</p></Link>
+          <Link to={"/profile"}><p>Contact</p></Link>
         </div>
 
         <div id="main" style={{ marginLeft: mainMargin, transition: "0.5s" }}>
-          <button class="menu-btn" onClick={openNav}>
-            <img src={Menu} alt="MenuLogo"></img>
+          <button  onClick={openNav}>
+            <img src={Menu} alt="MenuLogo" class="menu-btn"></img>
           </button>
         </div>
 
-        <img src={Logo} alt="Logo"></img>
+        <Link to={"/"} className="logo"><img src={Logo} alt="Logo"></img></Link>
 
         <div className="loginBar d-flex align-items-center">
           <img src={User} alt="UserLogo"></img>

@@ -4,7 +4,7 @@ const Request = require('../model/request.model')
 
 module.exports = {
     requestToBecomeDriver: (req, res) => {
-        const { userId, adminId,  } = req.params;
+        const { userId, adminId  } = req.params;
         const { driving_license, car_info  } = req.body;
 
         Request.create({
@@ -66,9 +66,10 @@ module.exports = {
                 return res.status(404).json({ error: 'Request not found' });
             }
     
-            const adminName = updatedRequest.admin.firstName;
+            const adminId = updatedRequest.admin._id;
             const driving_license = updatedRequest.driving_license || '';
             const car_info = updatedRequest.car_info || '';
+            console.log( updatedRequest);
     
             const driverData = {
                 firstName: updatedRequest.user.firstName,
@@ -80,7 +81,7 @@ module.exports = {
                 email: updatedRequest.user.email,
                 driving_license,
                 car_info,
-                company: adminName,
+                company: adminId,
                 status: "Driver"
             };
     
