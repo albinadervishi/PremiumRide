@@ -3,6 +3,7 @@ import axios from "axios";
 import "./UserDetails.css";
 import ReviewModal from "../ReviewModal/ReviewModal";
 import BookingModal from "../BookingModal/BookingModal";
+import DriverModal from "../DriverModal/DriverModal";
 import { useParams } from "react-router-dom";
 import User from "../../images/user_747376.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,12 +13,15 @@ import { Rating } from "@mui/material";
 const UserDetails = () => {
   const { id } = useParams();
   const [drivers, setDrivers] = useState([]);
+  const [companyDrivers, setCompanyDrivers] = useState([]);
   const [driver, setDriver] = useState([]);
   const [admin, setAdmin] = useState([]);
   const [admins, setAdmins] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
+  const [showDriverModal, setShowDriverModal] = useState(false);
+  const [status, setStatus] = useState("");
 
 
   const showReview = () => {
@@ -28,11 +32,14 @@ const UserDetails = () => {
     setShowBookingModal(true);
   };
 
+  const showDriverRequest = () => {
+    setShowDriverModal(true);
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/drivers")
       .then((res) => {
-        console.log(res.data);
         setDrivers(res.data);
       })
       .catch((err) => {
@@ -42,7 +49,6 @@ const UserDetails = () => {
     axios
       .get("http://localhost:8000/api/driver/" + id)
       .then((res) => {
-        console.log(res.data);
         setDriver(res.data);
       })
       .catch((err) => {
@@ -52,6 +58,8 @@ const UserDetails = () => {
     axios
       .get("http://localhost:8000/api/user/" + id)
       .then((res) => {
+        console.log("roli" + res.data.status)
+        setStatus(res.data.status);
         setAdmin(res.data);
       })
       .catch((err) => {
@@ -70,8 +78,16 @@ const UserDetails = () => {
     axios
       .get("http://localhost:8000/api/review/" + id)
       .then((res) => {
-        console.log(res.data);
         setReviews(res.data);
+      })
+      .catch((err) => {
+        console.log("errori se di" + err);
+      });
+
+      axios
+      .get("http://localhost:8000/api/companyDrivers/" + id)
+      .then((res) => {
+        setCompanyDrivers(res.data);
       })
       .catch((err) => {
         console.log("errori se di" + err);
@@ -79,10 +95,13 @@ const UserDetails = () => {
   }, []);
 
   const companies = admins.filter((user) => user.status === "Admin");
+  // const selectedDrivers = drivers.filter((driver) => driver.company.toString() === id);
 
   return (
     <div className="container d-flex ">
-      <div className="profileTable ">
+      
+        {status === "Driver" ? 
+        <div className="profileTable ">
         <div className="top-profile-bar d-flex align-items-center p-10">
           <img src={User} alt="Companies" />
           <div className="user-info">
@@ -141,9 +160,45 @@ const UserDetails = () => {
               </h3>
             </div>
           ))}
+        </div> 
         </div>
-      </div>
+        : 
+        <div className="profileTable ">
+        <div className="top-profile-bar d-flex align-items-center p-10">
+          <img src={User} alt="Companies" />
+          <div className="user-info">
+            <h3 class="font-bold text-l mb-2">
+              {admin.firstName} {admin.lastName}
+            </h3>
+            <h3>Tirane, Albania</h3>
+          </div>
+          <button onClick={(e) => {
+               showDriverRequest(e);
+              }}>Request to be a driver</button>
+        </div>
 
+        <div className="bottom-profile-bar p-6">
+            <p class="font-bold text-xl mb-2 ">All drivers in {admin.firstName} company</p>
+          {companyDrivers.map((driver, index) => (
+            <div className="card text-center" key={index}>
+              <div class="max-w-sm rounded overflow-hidden ">
+                <img
+                  src={User}
+                  alt="Driver"
+                />
+                <div class="px-2 py-3">
+                  <div class="font-bold text-l mb-2">{driver.firstName}</div>
+                  <p class="text-gray-700 text-base">
+                  {driver.company.firstName} {driver.company.lastName}
+                  </p>
+                </div>
+              </div>
+          </div>
+          ))}
+        </div> 
+        </div>}
+        
+    
       <div className="sideTables">
         <div className="side-table">
           <h1 class="driver-title font-bold text-l mb-2">
@@ -178,6 +233,7 @@ const UserDetails = () => {
       </div>
       <ReviewModal showReviewModal={showReviewModal} setShowReviewModal={setShowReviewModal} />
       <BookingModal showBookingModal={showBookingModal} setShowBookingModal={setShowBookingModal}/>
+      <DriverModal showDriverModal={showDriverModal} setShowDriverModal={setShowDriverModal}/>
     </div>
   );
 };

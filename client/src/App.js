@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
@@ -9,6 +8,7 @@ import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
 import OrderCab from './components/OrderCab/OrderCab';
 import UserDetails from './components/UserDetails/UserDetails';
+import UserProfile from './components/UserProfile/UserProfile';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path="*" element={<NotFound/>}></Route>
         <Route path="/order-cab" element={<> <Navbar/> <OrderCab/> <Footer/></>}></Route>
         <Route path="/driver-company/:id" element={<> <Navbar/> <UserDetails/> <Footer/></>}></Route>
+        <Route path="/profile/:id" element={<> <Navbar/> <UserProfile/> <Footer/></>}></Route>
 
       </Routes>
       </BrowserRouter>

@@ -14,12 +14,10 @@ const RequestSchema = new mongoose.Schema({
         ref: 'User'
     },
     driving_license: {
-        type: String,
-        required: [true, "This field is required"],
+        type: String
       },
     car_info: {
-        type: String,
-        required: [true, "This field is required"],
+        type: String
     },
 },
  { timestamps: true });

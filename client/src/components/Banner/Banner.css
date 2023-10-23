@@ -27,7 +27,7 @@
 	margin-top: 20px;
   }
 
-.order-btn {
+  .content .order-btn {
 	background-color: white;
 	height: 100%;
 	width: 130px;
@@ -35,7 +35,7 @@
 	text-align: center;
 }
 
-.order-btn:hover{
+.content .order-btn:hover{
 	background-color: #3D0F9E;
 	color: white;
 }

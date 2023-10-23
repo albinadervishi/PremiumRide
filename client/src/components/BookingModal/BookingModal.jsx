@@ -46,7 +46,7 @@ const userId = "64deab24bca44182ba0f6567";
           <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
-                <h2 class="font-semibold">Leave your review: </h2>
+                <h2 class="font-semibold">Book your cab: </h2>
               </div>
 
               <div class="form-group mt-2">

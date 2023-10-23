@@ -18,7 +18,7 @@ const OrderCab = () => {
             setUser(res.data.user);
           })
           .catch((err) => {
-            console.log("errori se di" + err);
+            console.log("errori " + err);
           });
 
           axios
@@ -39,16 +39,20 @@ const OrderCab = () => {
       <div className="companiesTable">
         <h1 class="driver-title font-bold text-l mb-2">Companies</h1>
         {companies.map((company, index) => (
-        <div className="company-info" key={index}>
+        <div  key={index}>
+          <Link to={"/driver-company/" + company._id} className="company-info">
             <div className="d-flex align-items-center">
         <img
                   src={User}
                   alt="Companies"
                 />
+                
                 <div class="font-bold text-l mb-2">{company.firstName}</div>
+                
 
         </div>
         <img src={Arrow}/>
+        </Link>
         </div>
 ))}
       </div>

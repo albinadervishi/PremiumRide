@@ -2,6 +2,20 @@
 const {User, Driver} = require('../model/user.model')
 const Request = require('../model/request.model')
 
+// module.exports = {
+//     getImageUrl: (req, res) => {
+//         const { filename } = req.params;
+      
+//         if (!filename) {
+//           return res.status(400).json({ error: 'Filename not provided.' });
+//         }
+      
+//         const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${filename}`;
+//         res.json({ imageUrl });
+//       },
+// },
+
+
 module.exports = {
     requestToBecomeDriver: (req, res) => {
         const { userId, adminId  } = req.params;
@@ -87,7 +101,6 @@ module.exports = {
     
             Driver.create(driverData)
                 .then(driver => {
-                    // Delete the original user
                     User.findByIdAndDelete(updatedRequest.user._id)
                         .then(deletedUser => {
                             res.json({ 

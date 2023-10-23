@@ -20,39 +20,17 @@ module.exports = {
     },
     
 
-    getBookingRequests: (req, res) => {
-        const { userStatus, userId } = req.params; 
-        const filter = { booking_status: "pending" };
-
-        if (userStatus === "Driver") {
-            filter.driver = userId;
-        } else if (userStatus === "User") {
-            filter.user = userId;
-        }
-
-        Booking.find(filter)
+    getBookings: (req, res) => {
+        Booking.find({
+            $or: [{ user: req.params.id }, { driver: req.params.id }]
+          })
         .populate('user')
         .populate('driver')
             .then(bookingRequests => res.json(bookingRequests))
             .catch(err => res.json(err));
     },
 
-    getBookings: (req, res) => {
-        const { userStatus, userId } = req.params; 
-        const filter = { booking_status: "accepted" };
 
-        if (userStatus === "Driver") {
-            filter.driver = userId;
-        } else if (userStatus === "User") {
-            filter.user = userId;
-        }
-
-        Booking.find(filter)
-        .populate('user')
-        .populate('driver')
-            .then(acceptedBookings => res.json(acceptedBookings))
-            .catch(err => res.json(err));
-    },
      
     deleteBooking: (req, res) => {   
                 Booking.deleteOne({ _id: req.params.id })

@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container{
+    background-color: white;
+    width: 80%;
+    padding: 30px 3%;
+}
+
+.profile-details{
+    padding: 30px ;
+}
+
+.profile-details img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 1rem; 
+    border-bottom: 2px solid transparent;
+    color: inherit;
+    text-decoration: none; 
+  }
+  
+  .nav-link:hover {
+    color: #666; 
+    border-color: #ccc; 
+  }
+  
+.active{
+    display: inline-block;
+    padding: 1rem; 
+    border-bottom: 2px solid #3D0F9E;
+    color: #3D0F9E;
+    text-decoration: none; 
+}
+  
+.requests-list{
+  padding: 10px 15px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 15px;
+  margin: 10px 0px;
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.requests-list button{
+  margin: 5px ;
+}

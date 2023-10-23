@@ -2,6 +2,8 @@
     justify-content: space-around;
     padding: 20px 10%;
     background-color: #CDCEF9;
+    width: 100%;
+    max-width: 100%;
 }
 
 .container .row .card {
@@ -98,3 +100,17 @@ padding: 15px;
   align-items: center;
 }
 
+.bottom-profile-bar .card {
+  width: 200px;
+  height: fit-content;
+  border-radius: 15px;
+  border: 1px solid rgb(204, 204, 204);
+  padding: 20px;
+  background-color: white;
+  color: black;
+  margin: 10px;
+}
+
+.bottom-profile-bar .card:hover {
+  box-shadow: 2px 2px 4px  rgb(113, 113, 113);
+}
